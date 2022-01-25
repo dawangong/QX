@@ -10,6 +10,7 @@ import { apolloClient } from "./apollo";
 
 import { Provider, Button, Toast } from '@ant-design/react-native';
 import tailwind from "tailwind-rn";
+import ExpoLogo from "./src/assets/svgs/expo.svg";
 
 
 // Imperial I-class Star Destroyer
@@ -107,6 +108,7 @@ function StarshipDetails({ starship }) {
       <Button onPress={() => Toast.info('This is a toast tips')}>
         Start
       </Button>
+      <ExpoLogo width={120} height={120} fill="black" />
       <Link to="/" style={tailwind("bg-blue-500 px-5 py-3 rounded-full")}>
         <Text>Home</Text>
       </Link>
