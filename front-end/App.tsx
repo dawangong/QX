@@ -9,6 +9,7 @@ import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
 import { apolloClient } from "./apollo";
 
 import { Provider, Button, Toast } from '@ant-design/react-native';
+import tailwind from "tailwind-rn";
 
 
 // Imperial I-class Star Destroyer
@@ -106,7 +107,7 @@ function StarshipDetails({ starship }) {
       <Button onPress={() => Toast.info('This is a toast tips')}>
         Start
       </Button>
-      <Link to="/">
+      <Link to="/" style={tailwind("bg-blue-500 px-5 py-3 rounded-full")}>
         <Text>Home</Text>
       </Link>
       <Link to="/about">
