@@ -6,6 +6,8 @@ import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
 import { apolloClient } from "./apollo";
 
 import { Provider, Button, Toast } from '@ant-design/react-native';
+import { Router, Switch, Link } from "./react-router";
+import ProjectRoute from "./src/routes";
 
 // Imperial I-class Star Destroyer
 const defaultStarshipId = "c3RhcnNoaXBzOjM=";
@@ -102,6 +104,12 @@ function StarshipDetails({ starship }) {
       <Button onPress={() => Toast.info('This is a toast tips')}>
         Start
       </Button>
+      <Link to="/">
+        <Text>Home</Text>
+      </Link>
+      <Link to="/about">
+        <Text>About</Text>
+      </Link>
       <View style={styles.section}>
         <Text style={styles.starshipName}>{starship.name}</Text>
         <Text style={styles.starshipModel}>{starship.model}</Text>
@@ -169,6 +177,11 @@ export default function App() {
   return (
     <ApolloProvider client={apolloClient}>
       <Provider>
+        <Router>
+          <Switch>
+            <ProjectRoute />
+          </Switch>
+        </Router>
         <RootComponent />
       </Provider>
     </ApolloProvider>
