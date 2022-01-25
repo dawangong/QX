@@ -25,7 +25,7 @@ const config: Array<Props> = [
     title: "111",
   },
   {
-    path: "/models",
+    path: "/About",
     exact: true,
     strict: false,
     Component: About,

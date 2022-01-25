@@ -1,5 +1,5 @@
 import React from "react";
-import { Route } from "../../react-router";
+import { Route } from "../../react-router.native";
 
 const renderRouter = (routers: any) => {
   const checkRoleRouter = routers.filter((item: any) => !item.isHide);

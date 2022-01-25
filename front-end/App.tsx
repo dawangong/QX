@@ -1,13 +1,15 @@
 import { ApolloProvider, gql, useQuery } from "@apollo/client";
 import { Picker } from "@react-native-picker/picker";
 import { useState } from "react";
+import { Router, Switch, Link } from "./react-router.native";
+import ProjectRoute from "./src/routes";
+
 import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
 
 import { apolloClient } from "./apollo";
 
 import { Provider, Button, Toast } from '@ant-design/react-native';
-import { Router, Switch, Link } from "./react-router";
-import ProjectRoute from "./src/routes";
+
 
 // Imperial I-class Star Destroyer
 const defaultStarshipId = "c3RhcnNoaXBzOjM=";
@@ -175,15 +177,15 @@ const styles = StyleSheet.create({
 
 export default function App() {
   return (
-    <ApolloProvider client={apolloClient}>
-      <Provider>
-        <Router>
+    <Router>
+      <ApolloProvider client={apolloClient}>
+        <Provider>
           <Switch>
             <ProjectRoute />
           </Switch>
-        </Router>
-        <RootComponent />
-      </Provider>
-    </ApolloProvider>
+          <RootComponent />
+        </Provider>
+      </ApolloProvider>
+    </Router>
   );
 }
