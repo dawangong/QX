@@ -5,6 +5,8 @@ import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
 
 import { apolloClient } from "./apollo";
 
+import { Provider, Button, Toast } from '@ant-design/react-native';
+
 // Imperial I-class Star Destroyer
 const defaultStarshipId = "c3RhcnNoaXBzOjM=";
 
@@ -97,6 +99,9 @@ function StarshipPicker(props) {
 function StarshipDetails({ starship }) {
   return (
     <>
+      <Button onPress={() => Toast.info('This is a toast tips')}>
+        Start
+      </Button>
       <View style={styles.section}>
         <Text style={styles.starshipName}>{starship.name}</Text>
         <Text style={styles.starshipModel}>{starship.model}</Text>
@@ -163,7 +168,9 @@ const styles = StyleSheet.create({
 export default function App() {
   return (
     <ApolloProvider client={apolloClient}>
-      <RootComponent />
+      <Provider>
+        <RootComponent />
+      </Provider>
     </ApolloProvider>
   );
 }
