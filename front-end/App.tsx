@@ -11,6 +11,7 @@ import { apolloClient } from "./apollo";
 import { Provider, Button, Toast } from '@ant-design/react-native';
 import tailwind from "tailwind-rn";
 import ExpoLogo from "./src/assets/svgs/expo.svg";
+import { fetchInfo } from "./src/apis/index";
 
 
 // Imperial I-class Star Destroyer
@@ -105,7 +106,10 @@ function StarshipPicker(props) {
 function StarshipDetails({ starship }) {
   return (
     <>
-      <Button onPress={() => Toast.info('This is a toast tips')}>
+      <Button onPress={() => {
+        Toast.info('This is a toast tips')
+        fetchInfo().then().catch(error => console.log(error))
+      }}>
         Start
       </Button>
       <ExpoLogo width={120} height={120} fill="black" />
