@@ -3,7 +3,7 @@ module.exports = function(api) {
   return {
     presets: ['babel-preset-expo'],
     plugins: [
-      ["import", { libraryName: "@ant-design/react-native" }],
+      ["import", { libraryName: "@ant-design/react-native" }]
     ]
   };
 };

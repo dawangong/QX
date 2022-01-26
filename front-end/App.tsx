@@ -1,17 +1,15 @@
 import { ApolloProvider, gql, useQuery } from "@apollo/client";
 import { Picker } from "@react-native-picker/picker";
 import { useState } from "react";
-import { Router, Switch, Link } from "./react-router.native";
+import { Router, Switch } from "./react-router.native";
 import ProjectRoute from "./src/routes";
 
-import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
+import { ActivityIndicator, StyleSheet, View } from "react-native";
 
 import { apolloClient } from "./apollo";
 
-import { Provider, Button, Toast } from '@ant-design/react-native';
-import tailwind from "tailwind-rn";
-import ExpoLogo from "./src/assets/svgs/expo.svg";
-import { fetchInfo } from "./src/apis/index";
+import { Provider } from '@ant-design/react-native';
+import StarshipDetails from "./StarshipDetails";
 
 
 // Imperial I-class Star Destroyer
@@ -71,7 +69,7 @@ function RootComponent() {
       {loading ? (
         <ActivityIndicator color="#333" />
       ) : (
-        <StarshipDetails starship={data.starship} />
+        <StarshipDetails styles={styles} starship={data.starship} />
       )}
     </View>
   );
@@ -100,56 +98,6 @@ function StarshipPicker(props) {
         />
       ))}
     </Picker>
-  );
-}
-
-function StarshipDetails({ starship }) {
-  return (
-    <>
-      <Button onPress={() => {
-        Toast.info('This is a toast tips')
-        fetchInfo().then().catch(error => console.log(error))
-      }}>
-        Start
-      </Button>
-      <ExpoLogo width={120} height={120} fill="black" />
-      <Link to="/" style={tailwind("bg-blue-500 px-5 py-3 rounded-full")}>
-        <Text>Home</Text>
-      </Link>
-      <Link to="/about">
-        <Text>About</Text>
-      </Link>
-      <View style={styles.section}>
-        <Text style={styles.starshipName}>{starship.name}</Text>
-        <Text style={styles.starshipModel}>{starship.model}</Text>
-      </View>
-
-      <View style={styles.section}>
-        <Text style={styles.label}>Operational abilities</Text>
-        <Text>- {starship.crew} crew members</Text>
-        <Text>- {starship.consumables} without restocking</Text>
-      </View>
-
-      <View>
-        <Text style={styles.label}>Ship attributes</Text>
-        <Text>- {starship.length}m long</Text>
-        <Text>- {starship.costInCredits} credits</Text>
-      </View>
-
-      <View style={styles.section}>
-        <Text style={styles.label}>Manufacturers</Text>
-        {starship.manufacturers.map((manufacturer) => (
-          <Text key={manufacturer}>- {manufacturer}</Text>
-        ))}
-      </View>
-
-      <View style={styles.section}>
-        <Text style={styles.label}>Appeared in</Text>
-        {starship.filmConnection.films.map((film) => (
-          <Text key={film.id}>- {film.title}</Text>
-        ))}
-      </View>
-    </>
   );
 }
 
