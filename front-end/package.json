@@ -15,7 +15,8 @@
     "react-router-native": "5.2.1",
     "tailwind-rn": "^3.0.1",
     "react-native-svg": "12.1.1",
-    "react-native-svg-transformer": "^0.14.3"
+    "react-native-svg-transformer": "^0.14.3",
+    "socket.io-client": "^4.3.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
