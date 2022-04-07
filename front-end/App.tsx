@@ -1,4 +1,4 @@
-import { ApolloProvider, gql, useQuery } from "@apollo/client";
+import { ApolloProvider } from "@apollo/client";
 import { Picker } from "@react-native-picker/picker";
 import { useState } from "react";
 import { Router, Switch } from "./react-router.native";
@@ -6,7 +6,8 @@ import ProjectRoute from "./src/routes";
 
 import { ActivityIndicator, StyleSheet, View } from "react-native";
 
-import { apolloClient } from "./apollo";
+import { apolloClient } from "./src/graphql/apollo";
+import { LIST_STARSHIPTS, GET_STARSHIP } from "./src/graphql/index";
 
 import { Provider } from '@ant-design/react-native';
 import StarshipDetails from "./StarshipDetails";
@@ -15,42 +16,10 @@ import StarshipDetails from "./StarshipDetails";
 // Imperial I-class Star Destroyer
 const defaultStarshipId = "c3RhcnNoaXBzOjM=";
 
-const LIST_STARSHIPTS = gql`
-  query listStarships {
-    allStarships {
-      starships {
-        id
-        name
-      }
-    }
-  }
-`;
-
-const GET_STARSHIP = gql`
-  query getStarship($id: ID!) {
-    starship(id: $id) {
-      id
-      name
-      model
-      starshipClass
-      manufacturers
-      length
-      crew
-      costInCredits
-      consumables
-      filmConnection {
-        films {
-          id
-          title
-        }
-      }
-    }
-  }
-`;
 
 function RootComponent() {
   const [starshipId, setStarshipId] = useState(defaultStarshipId);
-  const { data, error, loading } = useQuery(GET_STARSHIP, {
+  const { data, error, loading } = GET_STARSHIP({
     variables: { id: starshipId },
   });
 
@@ -76,7 +45,7 @@ function RootComponent() {
 }
 
 function StarshipPicker(props) {
-  const { data, error, loading } = useQuery(LIST_STARSHIPTS);
+  const { data, error, loading } = LIST_STARSHIPTS();
 
   if (error) {
     console.log("Error listing starships", error);

@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { Text, View } from "react-native";
 import { Button, Toast } from '@ant-design/react-native';
-import { fetchInfo } from "./src/apis/index";
 import { observer } from "mobx-react";
 import ExpoLogo from "./src/assets/svgs/expo.svg";
 import tailwind from "tailwind-rn";
@@ -14,8 +13,7 @@ const StarshipDetails = ({ styles, starship }) => {
     <>
       <Button onPress={() => {
         update();
-        Toast.info('This is a toast tips')
-        fetchInfo().then().catch(error => console.log(error))
+        Toast.info('This is a toast tips');
       }}>
         {text}
       </Button>
