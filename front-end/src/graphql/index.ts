@@ -11,7 +11,7 @@ export const LIST_STARSHIPTS = () => useQuery(gql`
   }
 `);
 
-export const GET_STARSHIP = (variables: any) => useQuery(gql`
+export const GET_STARSHIP = (params: any) => useQuery(gql`
   query getStarship($id: ID!) {
     starship(id: $id) {
       id
@@ -31,4 +31,4 @@ export const GET_STARSHIP = (variables: any) => useQuery(gql`
       }
     }
   }
-`, variables);
+`, params);

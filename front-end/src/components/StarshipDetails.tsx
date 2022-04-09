@@ -2,10 +2,10 @@ import { useContext } from "react";
 import { Text, View } from "react-native";
 import { Button, Toast } from '@ant-design/react-native';
 import { observer } from "mobx-react";
-import ExpoLogo from "./src/assets/svgs/expo.svg";
+import ExpoLogo from "../assets/svgs/expo.svg";
 import tailwind from "tailwind-rn";
-import { Link } from "./react-router.native";
-import AppStore from "./src/stores/AppStore";
+import { Link } from "../../react-router.native";
+import AppStore from "../stores/AppStore";
 
 const StarshipDetails = ({ styles, starship }) => {
   const { text, update } = useContext(AppStore);
