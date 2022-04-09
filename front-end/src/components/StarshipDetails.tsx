@@ -6,9 +6,25 @@ import ExpoLogo from "../assets/svgs/expo.svg";
 import tailwind from "tailwind-rn";
 import { Link } from "../../react-router.native";
 import AppStore from "../stores/AppStore";
+import styled from "styled-components/native";
 
 const StarshipDetails = ({ styles, starship }) => {
+  
   const { text, update } = useContext(AppStore);
+
+  const Container = styled(View)`
+    flex: 1;
+    background-color: papayawhip;
+    justify-content: center;
+    align-items: center;
+  `;
+
+  const Title = styled(Text)`
+    font-size: 24px;
+    font-weight: 500;
+    color: ${(props) => props.color};
+  `;
+
   return (
     <>
       <Button onPress={() => {
@@ -18,6 +34,10 @@ const StarshipDetails = ({ styles, starship }) => {
         {text}
       </Button>
       <ExpoLogo width={120} height={120} fill="black" />
+      <Container>
+        <Title color="palevioletred">Expo with 💅 Styled Components</Title>
+        <Title color="chocolate">iOS • Android • web</Title>
+      </Container>
       <Link to="/" style={tailwind("bg-blue-500 px-5 py-3 rounded-full")}>
         <Text>Home</Text>
       </Link>

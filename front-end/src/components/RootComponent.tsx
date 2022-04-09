@@ -37,11 +37,13 @@ const styles = StyleSheet.create({
 });
 
 const RootComponent = () => {
-  const { getStarShip, data, loading } = useContext(AppStore);
+  const { getStarShip } = useContext(AppStore);
 
-  useEffect(() => {
+  const { data, loading } = getStarShip();
+
+  // useEffect(() => {
     // getStarShip();
-  }, [])
+  // }, [])
 
   return (
     <View style={styles.container}>

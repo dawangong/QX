@@ -22,7 +22,9 @@ class AppStore {
     const { data, error, loading } = GET_STARSHIP({
       variables: { id: this.id },
     });
-    console.log(123);
+
+    return { data, loading };
+
     if (error) {
       console.log("Error fetching starship", error);
     } else {
